@@ -1,3 +1,24 @@
+-- Start title
+local printTitle = function ()
+    print [[
+    $$\
+    $$ |
+    $$$$$$$\   $$$$$$\  $$$$$$$\   $$$$$$\  $$$$$$\$$$$\   $$$$$$\  $$$$$$$\
+    $$  __$$\  \____$$\ $$  __$$\ $$  __$$\ $$  _$$  _$$\  \____$$\ $$  __$$\
+    $$ |  $$ | $$$$$$$ |$$ |  $$ |$$ /  $$ |$$ / $$ / $$ | $$$$$$$ |$$ |  $$ |
+    $$ |  $$ |$$  __$$ |$$ |  $$ |$$ |  $$ |$$ | $$ | $$ |$$  __$$ |$$ |  $$ |
+    $$ |  $$ |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |$$ | $$ | $$ |\$$$$$$$ |$$ |  $$ |
+    \__|  \__| \_______|\__|  \__| \____$$ |\__| \__| \__| \_______|\__|  \__|
+                                $$\   $$ |
+                                \$$$$$$  |
+                                \______/
+
+    Welcome to Lua Hangman by Iván!
+    ===============================
+
+    ]]
+end
+
 -- Initial setup
 local wordList = require "words"
 local randWord = wordList[math.random(1, #wordList)]
@@ -18,8 +39,10 @@ local valueInTable = function (table, value)
 end
 
 -- Game loop
+printTitle()
 local playing = true
 while playing do
+    print (art[1])
     print "Introduce your guess."
     local input = io.read()
     if input and string.len(input) == 1 then
