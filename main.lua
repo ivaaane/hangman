@@ -1,24 +1,3 @@
--- Start title
-local printTitle = function ()
-    print [[
-$$\
-$$ |
-$$$$$$$\   $$$$$$\  $$$$$$$\   $$$$$$\  $$$$$$\$$$$\   $$$$$$\  $$$$$$$\
-$$  __$$\  \____$$\ $$  __$$\ $$  __$$\ $$  _$$  _$$\  \____$$\ $$  __$$\
-$$ |  $$ | $$$$$$$ |$$ |  $$ |$$ /  $$ |$$ / $$ / $$ | $$$$$$$ |$$ |  $$ |
-$$ |  $$ |$$  __$$ |$$ |  $$ |$$ |  $$ |$$ | $$ | $$ |$$  __$$ |$$ |  $$ |
-$$ |  $$ |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |$$ | $$ | $$ |\$$$$$$$ |$$ |  $$ |
-\__|  \__| \_______|\__|  \__| \____$$ |\__| \__| \__| \_______|\__|  \__|
-                            $$\   $$ |
-                            \$$$$$$  |
-                             \______/
-By Ivan :3
-
-===============================
-
-    ]]
-end
-
 -- Function to check if a table contains a value
 local valueInTable = function (table, value)
     for _, v in pairs(table) do
@@ -39,7 +18,29 @@ local errors = 0
 local guesses = {}
 local actionText = "Introduce your guess."
 local playing = true
-printTitle()
+
+-- Check if the game should continue playing
+local checkEnd = function ()
+    if (errors >= 7) then
+        playing = false
+        actionText = "You lost!"
+        return true
+    end
+
+    local winCount = 0
+    for i = 1, #guesses do
+        for j = 1, #word do
+            if guesses[i] == word[j] then
+                winCount = winCount + 1
+            end
+        end
+    end
+    if winCount >= #word then
+        playing = false
+        actionText = "YOU WON!!!"
+        return true
+    end
+end
 
 -- Function to print information
 local printInformation = function ()
@@ -67,18 +68,10 @@ local printInformation = function ()
     end
 
     print(art[errors + 1])
-    print (displayText .. "\n")
-    print ("Errors: " .. errors)
-    print ("Letters said: " .. saidLetters)
-    print ("\n>> " .. actionText .. "\n")
-end
-
-local checkEnd = function ()
-    if (errors >= 7) then
-        playing = false
-        actionText = "You lost!"
-        return true
-    end
+    print ("    " .. displayText .. "\n")
+    print ("    Errors: " .. errors .. "/7")
+    print ("    Letters used: " .. saidLetters)
+    print ("\n    >> " .. actionText .. "\n")
 end
 
 -- GAME LOOP --
@@ -94,8 +87,6 @@ while playing do
     local input = string.lower(io.read())
     print (">> " .. input)
 
-    print "\n===============================\n"
-
     if input and string.len(input) == 1 then
         if not valueInTable(guesses, input) then
 
@@ -104,13 +95,13 @@ while playing do
                 actionText = "\""..input.."\" is included!"
             else
                 errors = errors + 1
-                actionText = "\""..input.."\" is not included"
+                actionText = "\""..input.."\" is not included."
             end
 
         else
-            print (">> You already said that letter!")
+            actionText = "You already said that letter!"
         end
     else
-        print (">> There was an error with the input. Try again.\n")
+        actionText = "There was an error with the input. Try again."
     end
 end
