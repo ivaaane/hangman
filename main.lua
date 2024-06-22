@@ -43,6 +43,8 @@ printTitle()
 
 -- Function to print information
 local printInformation = function ()
+    os.execute("cls")
+
     local displayText = "" -- Display the complete word with already guessed letters
     for _,v in pairs(word) do
         if valueInTable(guesses, v) then
@@ -71,8 +73,21 @@ local printInformation = function ()
     print ("\n>> " .. actionText .. "\n")
 end
 
+local checkEnd = function ()
+    if (errors >= 7) then
+        playing = false
+        actionText = "You lost!"
+        return true
+    end
+end
+
 -- GAME LOOP --
 while playing do
+    if checkEnd() then
+        printInformation()
+        break
+    end
+
     printInformation()
 
     -- Check input
