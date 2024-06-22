@@ -9,6 +9,7 @@ local valueInTable = function (table, value)
 end
 
 -- Initial setup
+math.randomseed(os.time())
 local art = require "art"
 local wordList = require "words"
 local randWord = wordList[math.random(1, #wordList)]
@@ -22,7 +23,6 @@ local playing = true
 -- Check if the game should continue playing
 local checkEnd = function ()
     if (errors >= 7) then
-        playing = false
         actionText = "You lost!"
         return true
     end
@@ -36,7 +36,6 @@ local checkEnd = function ()
         end
     end
     if winCount >= #word then
-        playing = false
         actionText = "YOU WON!!!"
         return true
     end
@@ -67,6 +66,7 @@ local printInformation = function ()
         end
     end
 
+    print("\n    HANGMAN by Ivan :3\n")
     print(art[errors + 1])
     print ("    " .. displayText .. "\n")
     print ("    Errors: " .. errors .. "/7")
@@ -77,6 +77,13 @@ end
 -- GAME LOOP --
 while playing do
     if checkEnd() then
+        for _,v in pairs({
+            "a","b","c","d","e","f","g",
+            "h","i","j","k","l","m","n",
+            "o","p","q","r","s","t","u",
+            "v","w","x","y","z"
+        }) do table.insert(guesses, v) end
+        playing = false
         printInformation()
         break
     end
@@ -85,7 +92,6 @@ while playing do
 
     -- Check input
     local input = string.lower(io.read())
-    print (">> " .. input)
 
     if input and string.len(input) == 1 then
         if not valueInTable(guesses, input) then
