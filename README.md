@@ -1,12 +1,8 @@
-# CLI Hangman game
+# CLI Hangman
 
-This is a Hangman game for the command line interface. I created it as an exercise to get more familiarized
-with Lua.
+This is a Hangman game for the command line interface.
 
-<p align="center">
-  <img src="https://github.com/ivaaane/lua-hangman/assets/171681721/dff6ff82-7064-46e7-94c5-25b7e3549a69" />
-</p>
-
+I created it as an exercise to get more familiarized with Lua, so it's a bit _PLRGFVJK_.
 
 ## How to play
 
@@ -14,7 +10,7 @@ You're given a secret word, and your mission is to guess which letters this word
 an error 8 times, you lose. You're given a preview of the word showing its length and the words you've
 guessed correctly in their positions.
 
-The UI of this project contains:
+The interface contains:
 
 * An ASCII picture showing the hanged man. The more mistakes you make, the more the drawing shows.
 * The hidden word preview.
@@ -26,17 +22,22 @@ Write a single character and press `enter` to submit the input.
 
 ## Executing
 
-You need Lua installed to execute to run this program ([link](https://www.lua.org/download.html)). Once you
-download the files, go to the directory and execute:
+You need Lua installed in your system. Clone this repository
+
+```bash
+git clone https://github.com/ivaaane/hangman.git
+```
+
+and then execute.
 
 ```bash
 lua hangman.lua
 ```
 
+No dependencies are needed
+
 ## Credits
 
-All code by me, Iván.
+* [ASCII art](https://gist.github.com/chrishorton/8510732aa9a80a03c829b09f12e20d9c).
 
-The ASCII art was taken from [here](https://gist.github.com/chrishorton/8510732aa9a80a03c829b09f12e20d9c).
-
-I don't remember from where I took the words, but if I find it I'll give the proper credit :'D
+* I don't remember from where I took the words, but if I find it I'll give the proper credit :'D
