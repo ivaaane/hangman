@@ -1,17 +1,12 @@
--- Function to check if a table contains a value
-local valueInTable = function (table, value)
-    for _, v in pairs(table) do
-        if v == value then
-            return true
-        end
-    end
-    return false
-end
+#!/bin/lua
 
 -- Initial setup
 math.randomseed(os.time())
-local art = require "art"
-local wordList = require "words"
+
+local art = require "src/art"
+local wordList = require "src/words"
+local valueInTable = require "lib/intable"
+
 local randWord = wordList[math.random(1, #wordList)]
 local word = {}
 for i = 1, #randWord do word[i] = string.sub(randWord, i, i) end
@@ -67,7 +62,7 @@ local printInformation = function ()
         end
         displayText = endDisplay
     end
-    os.execute("cls")
+    os.execute("clear")
     print ("\n    HANGMAN by Ivan :3\n")
     print (art[errors + 1])
     print ("    " .. displayText .. "\n")

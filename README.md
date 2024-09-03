@@ -28,13 +28,19 @@ You need Lua installed in your system. Clone this repository
 git clone https://github.com/ivaaane/hangman.git
 ```
 
+go to the new directory and allow access
+
+```bash
+chmod a+rx hangman.lua
+```
+
 and then execute.
 
 ```bash
-lua hangman.lua
+./hangman.lua
 ```
 
-No dependencies are needed
+No dependencies are needed. Enjoy your game!
 
 ## Credits
 
