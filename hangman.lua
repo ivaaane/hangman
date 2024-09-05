@@ -15,7 +15,7 @@ local guesses = {}
 local actionText = "Introduce your guess."
 
 -- Check if the game should continue playing
-local checkEnd = function ()
+local function checkEnd()
     if (errors >= 8) then
         actionText = "You lost!"
         return true
@@ -35,7 +35,7 @@ local checkEnd = function ()
 end
 
 -- Function to print information
-local printInformation = function ()
+local function printInformation()
     local displayText = "" -- Display the complete word with already guessed letters
     for _,v in pairs(word) do
         if valueInTable(guesses, v) then
