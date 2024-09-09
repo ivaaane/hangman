@@ -63,7 +63,6 @@ local function printInformation()
         displayText = endDisplay
     end
     os.execute("clear")
-    print ("\n    HANGMAN by Ivan :3\n")
     print (art[errors + 1])
     print ("    " .. displayText .. "\n")
     print ("    Errors: " .. errors .. "/8")

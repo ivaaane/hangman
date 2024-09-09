@@ -1,4 +1,4 @@
-local words = {
+return {
     "people",          "history",       "way",           "art",         "world",
     "information",     "map",           "two",           "family",      "government",
     "health",          "system",        "computer",      "meat",        "year",
@@ -97,5 +97,3 @@ local words = {
     "speaker",         "stranger",      "surgery",       "sympathy",    "tale",
     "throat",          "trainer",       "uncle",         "youth"
 }
-
-return words
